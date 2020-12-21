@@ -28,8 +28,8 @@ a {
 @font-face {
   font-family: 'BMJUA';
   src:
-      url("../public/font/BMJUA_ttf.ttf") format('truetype'), 
-      url("../public/font/BMJUA_otf.otf") format('opentype');
+      url("../resource/font/BMJUA_ttf.ttf") format('truetype'), 
+      url("../resource/font/BMJUA_otf.otf") format('opentype');
   font-weight: normal;
   font-style: normal;
 }
