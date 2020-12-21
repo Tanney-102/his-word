@@ -30,7 +30,7 @@ const createShodowDropEffect = (element, delay) => {
 const getRandomWordCardURL = () => {
   const randomIndex = Math.floor(Math.random() * 34 + 1)
 
-  return `../public/img/wordcards/${randomIndex}.jpg`;
+  return `../resource/img/wordcards/${randomIndex}.jpg`;
 };
 
 const fillWordCard = (container, imgURL) => {
