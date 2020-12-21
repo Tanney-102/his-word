@@ -72,12 +72,12 @@ const showDownloadButton = (container, imgURL) => {
 const slidePageToLeft = ($main) => {
   const $secondPage = document.getElementById("second-page");
   const imgURL = getRandomWordCardURL();
+  fillWordCard($secondPage.children[1], imgURL);
 
   setTimeout(() => {
     $main.style.transform = "translateX(-50%)"
     createShakeEffect($secondPage.children[0], 0.8);
     createSlideInEffect($secondPage.children[1], 1.9);
-    fillWordCard($secondPage.children[1], imgURL);
     showDownloadButton($secondPage, imgURL);
   }, 700);
 
