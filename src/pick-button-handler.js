@@ -13,8 +13,8 @@ const createRippleEffect = (e) => {
 };
 
 const createShakeEffect = (element, delay) => {
-  element.style.webkitAnimation = `shake-horizontal 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) ${delay}s both`;
-  element.style.animation = `shake-horizontal 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) ${delay}s both`;
+  element.style.webkitAnimation = `shake-horizontal 1.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) ${delay}s both`;
+  element.style.animation = `shake-horizontal 1.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) ${delay}s both`;
 };
 
 const createSlideInEffect = (element, delay) => {
@@ -76,14 +76,14 @@ const slidePageToLeft = ($main) => {
 
   setTimeout(() => {
     $main.style.transform = "translateX(-50%)"
-    createShakeEffect($secondPage.children[0], 0.8);
-    createSlideInEffect($secondPage.children[1], 1.9);
+    createShakeEffect($secondPage.children[0], 0.9);
+    createSlideInEffect($secondPage.children[1], 2.5);
     showDownloadButton($secondPage, imgURL);
-  }, 700);
+  }, 800);
 
   setTimeout(() => {
     createShodowDropEffect($secondPage.children[1], 0);
-  }, 3400);
+  }, 4000);
 };
 
 export const pickButtonHandler = (e) => {
