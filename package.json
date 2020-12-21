@@ -1,0 +1,23 @@
+{
+  "name": "his-word",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanney-102/his-word.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanney-102/his-word/issues"
+  },
+  "homepage": "https://github.com/Tanney-102/his-word#readme",
+  "dependencies": {
+    "dom-to-image": "^2.6.0",
+    "file-saver": "^2.0.5"
+  }
+}

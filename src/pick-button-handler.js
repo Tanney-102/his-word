@@ -35,14 +35,38 @@ const getRandomWordCardURL = () => {
 
 const fillWordCard = (container, imgURL) => {
   container.innerHTML += `
-    <img src=${imgURL} class="wordcard" />
+    <img src=${imgURL} id="wordcard" class="wordcard" />
   `
+};
+
+const downloadImage = (imgURL) => {
+  fetch(imgURL)
+      .then(res => res.blob())
+      .then(blob => new Promise((resolve, reject) => {
+        const reader = new FileReader;
+        let imgData
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      }))
+      .then(imgSource => {
+        const imgData = atob(imgSource.split(",")[1]);
+        const buf = new ArrayBuffer(imgData.length);
+        const view = new Uint8Array(buf);
+        for(let i = 0; i < imgData.length; i++) {
+          view[i] = imgData.charCodeAt(i) & 0xff;
+        }
+
+        const blob = new Blob([view], { type: "image/jpg" });
+        window.saveAs(blob, "2021 말씀뽑기.jpg");
+      });
 };
 
 const showDownloadButton = (container, imgURL) => {
   container.innerHTML += `
-    <a href=${imgURL} download="2021년 말씀뽑기.jpg" class="download-button">다운로드</a>
+    <button class="download-button"">다운로드</button>
   `;
+  container.getElementsByTagName("button")[0].addEventListener("click", () => downloadImage(imgURL));
 };
 
 const slidePageToLeft = ($main) => {
@@ -54,7 +78,7 @@ const slidePageToLeft = ($main) => {
     createShakeEffect($secondPage.children[0], 0.8);
     createSlideInEffect($secondPage.children[1], 1.9);
     fillWordCard($secondPage.children[1], imgURL);
-    showDownloadButton($secondPage);
+    showDownloadButton($secondPage, imgURL);
   }, 700);
 
   setTimeout(() => {
