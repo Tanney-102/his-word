@@ -6,29 +6,31 @@
   <title>Document</title>
 </head>
 <body>
-  
+  다운로드
 </body>
 </html>
 <script>
-  const url = location.search.split("=")[1];
-  fetch(url)
-      .then(res => res.blob())
-      .then(blob => new Promise((resolve, reject) => {
-        const reader = new FileReader;
-        let imgData
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
-      }))
-      .then(imgSource => {
-        const imgData = atob(imgSource.split(",")[1]);
-        const buf = new ArrayBuffer(imgData.length);
-        const view = new Uint8Array(buf);
-        for(let i = 0; i < imgData.length; i++) {
-          view[i] = imgData.charCodeAt(i) & 0xff;
-        }
+  windwo.onload = () => {
+    const url = location.search.split("=")[1];
+    fetch(url)
+        .then(res => res.blob())
+        .then(blob => new Promise((resolve, reject) => {
+          const reader = new FileReader;
+          let imgData
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        }))
+        .then(imgSource => {
+          const imgData = atob(imgSource.split(",")[1]);
+          const buf = new ArrayBuffer(imgData.length);
+          const view = new Uint8Array(buf);
+          for(let i = 0; i < imgData.length; i++) {
+            view[i] = imgData.charCodeAt(i) & 0xff;
+          }
 
-        const blob = new Blob([view], { type: "image/jpg" });
-        window.saveAs(blob, "2021 말씀뽑기.jpg");
-      });
+          const blob = new Blob([view], { type: "image/jpg" });
+          window.saveAs(blob, "2021 말씀뽑기.jpg");
+        });
+      }
 </script>
