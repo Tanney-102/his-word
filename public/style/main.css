@@ -141,6 +141,10 @@ main {
   color: #6253ff;
   font-family:'나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
   font-size: 0.8rem;
+
+  position: absolute;
+  top: 0;
+  left: 50px;
 }
 
 @keyframes ripple-effect {
