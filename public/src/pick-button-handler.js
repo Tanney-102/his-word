@@ -34,10 +34,24 @@ const getRandomWordCardURL = () => {
 };
 
 const fillWordCard = (container, imgURL) => {
+  const $secondPage = container.parentElement;
+  const $main = $secondPage.parentElement;
+
   container.innerHTML += `
     <img src=${imgURL} id="wordcard" class="wordcard" />
   `
-  container.children[0].onload = () => console.log("test");
+  container.children[0].onload = () => {
+    setTimeout(() => {
+      $main.style.transform = "translateX(-50%)"
+      createShakeEffect($secondPage.children[0], 0.9);
+      createSlideInEffect($secondPage.children[1], 2.5);
+      showDownloadButton($secondPage, imgURL);
+    }, 800);
+  
+    setTimeout(() => {
+      createShodowDropEffect($secondPage.children[1], 0);
+    }, 4000) 
+  };
 };
 
 const downloadImage = (imgURL) => {
@@ -82,17 +96,6 @@ const slidePageToLeft = ($main) => {
   const $secondPage = document.getElementById("second-page");
   const imgURL = getRandomWordCardURL();
   fillWordCard($secondPage.children[1], imgURL);
-
-  setTimeout(() => {
-    $main.style.transform = "translateX(-50%)"
-    createShakeEffect($secondPage.children[0], 0.9);
-    createSlideInEffect($secondPage.children[1], 2.5);
-    showDownloadButton($secondPage, imgURL);
-  }, 800);
-
-  setTimeout(() => {
-    createShodowDropEffect($secondPage.children[1], 0);
-  }, 4000);
 };
 
 export const pickButtonHandler = (e) => {
