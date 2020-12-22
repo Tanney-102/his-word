@@ -139,12 +139,15 @@ main {
 
 .message-for-ios {
   color: #6253ff;
-  font-family:'나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
+  font-family: 'BMJUA', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
   font-size: 0.8rem;
 
   position: absolute;
-  top: 0;
-  left: 50px;
+  top: 10px;
+  left: 40px;
+
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3.9s both;
+            animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3.9s both;
 }
 
 @keyframes ripple-effect {
@@ -294,5 +297,22 @@ main {
   100% {
     -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
             box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+
+ @-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
