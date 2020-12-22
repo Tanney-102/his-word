@@ -37,11 +37,20 @@ const fillWordCard = (container, imgURL) => {
   container.innerHTML += `
     <img src=${imgURL} id="wordcard" class="wordcard" />
   `
-  container.addEventListener("click", () => downloadImage(imgURL));
 };
 
-const downloadImage = (imgURL) => {
-  console.log("test");
+const downloadOnKakaoBrowser = (imgURL) => {
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (userAgent.search("android") > -1) {
+    location.href=`intent://his-word.web.app/download?url=${imgURL}#Intent;scheme=http;package=com.android.chrome;end`;
+  } else if (userAgent.search("iphone") > -1 || userAgent.search("ipad") > -1 || userAgent.search("ipod") > -1) {
+    location.href = `ftp://his-word.web.app/bridge?url=${imgURL}/bridge.html`;
+  } else {
+    alert("해당 브라우저에서는 다운로드가 불가합니다. 다른 브라우저로 링크를 열어주세요.");
+  }
+};
+
+const downloadOnOtherBrowser = (imgURL) => {
   fetch(imgURL)
       .then(res => res.blob())
       .then(blob => new Promise((resolve, reject) => {
@@ -62,6 +71,15 @@ const downloadImage = (imgURL) => {
         const blob = new Blob([view], { type: "image/jpg" });
         window.saveAs(blob, "2021 말씀뽑기.jpg");
       });
+};
+
+const downloadImage = (imgURL) => {
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (userAgent.search("kakaotalk" > -1)) {
+    downloadOnKakaoBrowser(imgURL);
+  } else {
+    downloadOnOtherBrowser(imgURL);
+  }
 };
 
 const showDownloadButton = (container, imgURL) => {
