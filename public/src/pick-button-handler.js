@@ -63,10 +63,18 @@ const downloadImage = (imgURL) => {
 };
 
 const showDownloadButton = (container, imgURL) => {
-  container.innerHTML += `
-    <button class="download-button"">다운로드</button>
-  `;
-  container.getElementsByTagName("button")[0].addEventListener("click", () => downloadImage(imgURL));
+  if (userAgent.search("iphone") > -1 || userAgent.search("ipad") > -1 || userAgent.search("ipod") > -1) {
+    container.innerHTML += `
+      <div class="message-for-ios">
+        * 이미지를 길게 눌러 다운로드해주세요.
+      </div>
+      `
+  } else {
+    container.innerHTML += `
+      <button class="download-button"">다운로드</button>
+    `;
+    container.getElementsByTagName("button")[0].addEventListener("click", () => downloadImage(imgURL));
+  }
 };
 
 const slidePageToLeft = ($main) => {
