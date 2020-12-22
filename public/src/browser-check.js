@@ -12,7 +12,7 @@ const openInOtherBrowser = () => {
 export default function checkBrowser() {
   const userAgent = navigator.userAgent.toLowerCase();
   console.log(userAgent);
-  if (userAgent.search("kakaotalk" > -1)) {
+  if (userAgent.search("kakaotalk") > -1) {
     openInOtherBrowser();
   }
 };
