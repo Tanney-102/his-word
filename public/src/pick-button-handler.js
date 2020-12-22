@@ -37,6 +37,7 @@ const fillWordCard = (container, imgURL) => {
   container.innerHTML += `
     <img src=${imgURL} id="wordcard" class="wordcard" />
   `
+  container.children[0].onload = () => console.log("test");
 };
 
 const downloadImage = (imgURL) => {
@@ -68,7 +69,7 @@ const showDownloadButton = (container, imgURL) => {
       <div class="message-for-ios">
         * 이미지를 길게 눌러 다운로드해주세요.
       </div>
-      `
+    `;
   } else {
     container.innerHTML += `
       <button class="download-button"">다운로드</button>

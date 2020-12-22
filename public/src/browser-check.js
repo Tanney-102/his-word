@@ -10,6 +10,8 @@ export default function checkBrowser() {
     }
   } else if (userAgent.search("iphone") > -1 || userAgent.search("ipad") > -1 || userAgent.search("ipod") > -1) {
     window.downloadBtn = 0;
+  } else {
+    window.downloadBtn = 1;
   }
 };
 
