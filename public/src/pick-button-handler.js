@@ -37,9 +37,11 @@ const fillWordCard = (container, imgURL) => {
   container.innerHTML += `
     <img src=${imgURL} id="wordcard" class="wordcard" />
   `
+  container.addEventListener("click", () => downloadImage(imgURL));
 };
 
 const downloadImage = (imgURL) => {
+  console.log("test");
   fetch(imgURL)
       .then(res => res.blob())
       .then(blob => new Promise((resolve, reject) => {
