@@ -137,7 +137,7 @@ main {
   background-color: #6253ff;
 }
 
-#seconde-page .message-for-ios {
+.message-for-ios {
   color: #6253ff;
   font-family:'나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
   font-size: 0.8rem;
