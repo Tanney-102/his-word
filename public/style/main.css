@@ -150,6 +150,19 @@ main {
             animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3.9s both;
 }
 
+footer {
+  color: #6253ff;
+  opacity: 0.8;
+  font-family: 'BMJUA', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 50px 0;
+}
+
 @keyframes ripple-effect {
   0% {
     width: 0px;
